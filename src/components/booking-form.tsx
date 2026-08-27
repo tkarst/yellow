@@ -2,11 +2,10 @@
 
 import { useState } from "react";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { site } from "@/content/site";
+import { cn } from "@/lib/utils";
 
 type FormState = {
   name: string;
@@ -16,26 +15,25 @@ type FormState = {
   message: string;
 };
 
-const empty: FormState = {
-  name: "",
-  email: "",
-  city: "",
-  date: "",
-  message: "",
-};
+const fieldClass =
+  "h-11 w-full rounded-none border border-white/15 bg-black/30 px-3 text-base text-foreground outline-none placeholder:text-muted-foreground focus-visible:border-gold/70 focus-visible:ring-3 focus-visible:ring-gold/30";
 
 export function BookingForm() {
-  const [values, setValues] = useState<FormState>(empty);
   const [error, setError] = useState<string | null>(null);
   const [sent, setSent] = useState(false);
 
-  function update<K extends keyof FormState>(key: K, value: FormState[K]) {
-    setValues((current) => ({ ...current, [key]: value }));
-  }
-
   function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setError(null);
+    event.stopPropagation();
+
+    const data = new FormData(event.currentTarget);
+    const values: FormState = {
+      name: String(data.get("name") ?? ""),
+      email: String(data.get("email") ?? ""),
+      city: String(data.get("city") ?? ""),
+      date: String(data.get("date") ?? ""),
+      message: String(data.get("message") ?? ""),
+    };
 
     if (!values.name.trim()) {
       setError("Add a name so we know who to write back to.");
@@ -50,6 +48,7 @@ export function BookingForm() {
       return;
     }
 
+    setError(null);
     setSent(true);
   }
 
@@ -69,7 +68,7 @@ export function BookingForm() {
           className="mt-8 h-11 border-gold/35 px-5 font-display tracking-[0.22em] text-gold uppercase hover:bg-gold/10 hover:text-gold"
           onClick={() => {
             setSent(false);
-            setValues(empty);
+            setError(null);
           }}
         >
           Send another
@@ -79,63 +78,59 @@ export function BookingForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-5" noValidate>
+    <form
+      onSubmit={onSubmit}
+      className="space-y-5"
+      noValidate
+      method="post"
+      action="#booking"
+    >
       <p className="text-sm text-muted-foreground">{site.bookingNote}</p>
 
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Name" htmlFor="booking-name">
-          <Input
+          <input
             id="booking-name"
             name="name"
             autoComplete="name"
-            value={values.name}
-            onChange={(event) => update("name", event.target.value)}
-            className="h-11 rounded-none border-white/15 bg-black/30 px-3"
+            className={fieldClass}
             placeholder="Your name"
           />
         </Field>
         <Field label="Email" htmlFor="booking-email">
-          <Input
+          <input
             id="booking-email"
             name="email"
             type="email"
             autoComplete="email"
-            value={values.email}
-            onChange={(event) => update("email", event.target.value)}
-            className="h-11 rounded-none border-white/15 bg-black/30 px-3"
+            className={fieldClass}
             placeholder="you@example.com"
           />
         </Field>
         <Field label="City" htmlFor="booking-city">
-          <Input
+          <input
             id="booking-city"
             name="city"
-            value={values.city}
-            onChange={(event) => update("city", event.target.value)}
-            className="h-11 rounded-none border-white/15 bg-black/30 px-3"
+            className={fieldClass}
             placeholder="Oslo"
           />
         </Field>
         <Field label="Preferred date" htmlFor="booking-date">
-          <Input
+          <input
             id="booking-date"
             name="date"
             type="date"
-            value={values.date}
-            onChange={(event) => update("date", event.target.value)}
-            className="h-11 rounded-none border-white/15 bg-black/30 px-3"
+            className={fieldClass}
           />
         </Field>
       </div>
 
       <Field label="Message" htmlFor="booking-message">
-        <Textarea
+        <textarea
           id="booking-message"
           name="message"
           rows={5}
-          value={values.message}
-          onChange={(event) => update("message", event.target.value)}
-          className="min-h-32 rounded-none border-white/15 bg-black/30 px-3 py-3"
+          className={cn(fieldClass, "h-auto min-h-32 py-3")}
           placeholder="Room, capacity, date, and anything we should know."
         />
       </Field>
@@ -146,12 +141,15 @@ export function BookingForm() {
         </p>
       ) : null}
 
-      <Button
+      <button
         type="submit"
-        className="h-12 w-full px-6 font-display text-[0.8rem] tracking-[0.28em] uppercase sm:w-auto"
+        className={cn(
+          buttonVariants(),
+          "h-12 w-full rounded-none px-6 font-display text-[0.8rem] tracking-[0.28em] uppercase sm:w-auto",
+        )}
       >
         Send enquiry
-      </Button>
+      </button>
     </form>
   );
 }

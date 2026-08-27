@@ -35,7 +35,7 @@ export function SiteHeader() {
           : "border-b border-transparent bg-transparent",
       )}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:h-[4.25rem] sm:px-6">
+      <div className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between gap-4 px-4 sm:h-[4.75rem] sm:px-6">
         <a
           href="#top"
           className="flex items-center gap-3 rounded-sm focus-visible:ring-2 focus-visible:ring-gold/70 focus-visible:outline-none"
@@ -82,7 +82,7 @@ export function SiteHeader() {
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="border-white/10 bg-[#0c0a09] sm:max-w-xs"
+              className="overflow-y-auto border-white/10 bg-[#0c0a09] pt-14"
             >
               <SheetHeader>
                 <SheetTitle className="font-display tracking-[0.28em] text-gold uppercase">
