@@ -7,47 +7,42 @@ import { Label } from "@/components/ui/label";
 import { site } from "@/content/site";
 import { cn } from "@/lib/utils";
 
-type FormState = {
-  name: string;
-  email: string;
-  city: string;
-  date: string;
-  message: string;
-};
-
 const fieldClass =
   "h-11 w-full rounded-none border border-white/15 bg-black/30 px-3 text-base text-foreground outline-none placeholder:text-muted-foreground focus-visible:border-gold/70 focus-visible:ring-3 focus-visible:ring-gold/30";
+
+function readForm(form: HTMLFormElement) {
+  const data = new FormData(form);
+  return {
+    name: String(data.get("name") ?? ""),
+    email: String(data.get("email") ?? ""),
+    message: String(data.get("message") ?? ""),
+  };
+}
+
+function validate(form: HTMLFormElement) {
+  const values = readForm(form);
+  if (!values.name.trim()) {
+    return "Add a name so we know who to write back to.";
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) {
+    return "That email does not look right.";
+  }
+  if (values.message.trim().length < 12) {
+    return "Tell us a little about the night — a sentence is enough.";
+  }
+  return null;
+}
 
 export function BookingForm() {
   const [error, setError] = useState<string | null>(null);
   const [sent, setSent] = useState(false);
 
-  function onSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    event.stopPropagation();
-
-    const data = new FormData(event.currentTarget);
-    const values: FormState = {
-      name: String(data.get("name") ?? ""),
-      email: String(data.get("email") ?? ""),
-      city: String(data.get("city") ?? ""),
-      date: String(data.get("date") ?? ""),
-      message: String(data.get("message") ?? ""),
-    };
-
-    if (!values.name.trim()) {
-      setError("Add a name so we know who to write back to.");
+  function handleSend(form: HTMLFormElement) {
+    const nextError = validate(form);
+    if (nextError) {
+      setError(nextError);
       return;
     }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) {
-      setError("That email does not look right.");
-      return;
-    }
-    if (values.message.trim().length < 12) {
-      setError("Tell us a little about the night — a sentence is enough.");
-      return;
-    }
-
     setError(null);
     setSent(true);
   }
@@ -79,11 +74,12 @@ export function BookingForm() {
 
   return (
     <form
-      onSubmit={onSubmit}
       className="space-y-5"
       noValidate
-      method="post"
-      action="#booking"
+      onSubmit={(event) => {
+        event.preventDefault();
+        handleSend(event.currentTarget);
+      }}
     >
       <p className="text-sm text-muted-foreground">{site.bookingNote}</p>
 
@@ -136,17 +132,24 @@ export function BookingForm() {
       </Field>
 
       {error ? (
-        <p role="alert" className="text-sm text-ember">
+        <p
+          role="alert"
+          className="border border-ember/40 bg-ember/10 px-3 py-2 text-sm text-ember"
+        >
           {error}
         </p>
       ) : null}
 
       <button
-        type="submit"
+        type="button"
         className={cn(
           buttonVariants(),
           "h-12 w-full rounded-none px-6 font-display text-[0.8rem] tracking-[0.28em] uppercase sm:w-auto",
         )}
+        onClick={(event) => {
+          const form = event.currentTarget.form;
+          if (form) handleSend(form);
+        }}
       >
         Send enquiry
       </button>

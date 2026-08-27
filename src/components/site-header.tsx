@@ -1,23 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 import { BrandMark } from "@/components/brand-mark";
 import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
 import { nav, site } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
@@ -26,12 +19,26 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
   return (
+    <>
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-[background,border,backdrop-filter] duration-300",
-        scrolled
-          ? "border-b border-white/10 bg-[#070605]/80 backdrop-blur-md"
+        "fixed inset-x-0 top-0 z-50 transition-[background,border] duration-300",
+        scrolled || menuOpen
+          ? "border-b border-white/10 bg-[#070605]/90"
           : "border-b border-transparent bg-transparent",
       )}
     >
@@ -39,6 +46,7 @@ export function SiteHeader() {
         <a
           href="#top"
           className="flex items-center gap-3 rounded-sm focus-visible:ring-2 focus-visible:ring-gold/70 focus-visible:outline-none"
+          onClick={() => setMenuOpen(false)}
         >
           <BrandMark size="nav" priority />
           <span className="sr-only">{site.name}</span>
@@ -59,67 +67,63 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <Button
             nativeButton={false}
-            render={
-              <a href="#booking" className="hidden sm:inline-flex" />
-            }
-            className="hidden h-10 px-4 font-display text-[0.72rem] tracking-[0.22em] uppercase sm:inline-flex"
+            render={<a href="#booking" />}
+            className="hidden h-10 px-4 font-display text-[0.72rem] tracking-[0.22em] uppercase md:inline-flex"
           >
             Book the band
           </Button>
 
-          <Sheet>
-            <SheetTrigger
-              render={
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="md:hidden"
-                  aria-label="Open menu"
-                />
-              }
-            >
-              <Menu className="size-5" />
-            </SheetTrigger>
-            <SheetContent
-              side="right"
-              className="overflow-y-auto border-white/10 bg-[#0c0a09] pt-14"
-            >
-              <SheetHeader>
-                <SheetTitle className="font-display tracking-[0.28em] text-gold uppercase">
-                  {site.name}
-                </SheetTitle>
-              </SheetHeader>
-              <nav className="flex flex-col gap-1 px-4" aria-label="Mobile">
-                {nav.map((item) => (
-                  <SheetClose
-                    key={item.href}
-                    render={
-                      <a
-                        href={item.href}
-                        className="font-display py-3 text-lg tracking-[0.22em] text-foreground/90 uppercase"
-                      />
-                    }
-                  >
-                    {item.label}
-                  </SheetClose>
-                ))}
-              </nav>
-              <div className="p-4">
-                <SheetClose
-                  render={
-                    <a
-                      href="#booking"
-                      className="bg-primary text-primary-foreground inline-flex h-11 w-full items-center justify-center font-display text-sm tracking-[0.22em] uppercase"
-                    />
-                  }
-                >
-                  Book the band
-                </SheetClose>
-              </div>
-            </SheetContent>
-          </Sheet>
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon"
+            className="md:hidden"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            {menuOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+          </Button>
         </div>
       </div>
     </header>
+
+      {menuOpen ? (
+        <div
+          id="mobile-menu"
+          className="fixed inset-x-0 top-[4.25rem] bottom-0 z-[60] sm:top-[4.75rem] md:hidden"
+        >
+          <button
+            type="button"
+            className="absolute inset-0 bg-black/75"
+            aria-label="Close menu"
+            onClick={() => setMenuOpen(false)}
+          />
+          <nav
+            aria-label="Mobile"
+            className="relative ml-auto flex h-full w-[min(100%,20rem)] flex-col border-l border-white/10 bg-[#0c0a09] px-6 py-8"
+          >
+            {nav.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="font-display border-b border-white/10 py-4 text-xl tracking-[0.22em] text-foreground uppercase"
+                onClick={() => setMenuOpen(false)}
+              >
+                {item.label}
+              </a>
+            ))}
+            <a
+              href="#booking"
+              className="bg-primary text-primary-foreground mt-8 inline-flex h-12 items-center justify-center font-display text-sm tracking-[0.22em] uppercase"
+              onClick={() => setMenuOpen(false)}
+            >
+              Book the band
+            </a>
+          </nav>
+        </div>
+      ) : null}
+    </>
   );
 }
