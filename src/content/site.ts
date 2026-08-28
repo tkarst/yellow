@@ -10,8 +10,8 @@ export const site = {
   pitch:
     "Live Coldplay. Stadium atmosphere. The songs you already sing.",
   description:
-    "Yellow is a Coldplay tribute from Oslo, playing the catalogue live across the Nordics and northern Europe.",
-  formed: "Oslo, 2022",
+    "Yellow is a Coldplay tribute from Sarpsborg, playing the catalogue live.",
+  formed: "Sarpsborg, 2025",
   runtime: "About 90 minutes, no backing tracks",
   legal:
     "Yellow is a tribute band and is not affiliated with Coldplay.",
@@ -37,11 +37,11 @@ export const about = {
   kicker: "The band",
   title: "Six people. One catalogue. A dark room that suddenly feels huge.",
   body: [
-    "Yellow started in a rehearsal room in Grünerløkka with a battered upright piano and a shared rule: Coldplay has to feel live. Not a laptop and a singer. Real dynamics. The hush before Fix You. The lift when the lights go gold.",
+    "Yellow started in Sarpsborg in 2025 with one rule: Coldplay has to feel live. Not a laptop and a singer. Real dynamics. The hush before Fix You. The lift when the lights go gold.",
     "We play clubs, theatres, and the odd festival field. The brief is always the same — play the songs the way people remember them from the night, not from the playlist.",
   ],
   stats: [
-    { label: "Formed", value: "Oslo, 2022" },
+    { label: "Formed", value: "Sarpsborg, 2025" },
     { label: "Set", value: "90 minutes" },
     { label: "Tracks", value: "No backing tracks" },
   ],
