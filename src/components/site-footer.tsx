@@ -14,9 +14,6 @@ export function SiteFooter() {
         <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
           {site.legal}
         </p>
-        <p className="text-[0.7rem] tracking-[0.18em] text-muted-foreground/70 uppercase">
-          {site.placeholderBanner}
-        </p>
       </div>
     </footer>
   );

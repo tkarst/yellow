@@ -1,8 +1,6 @@
 /**
- * All public copy for the Yellow site lives here so real bios, dates,
+ * All public copy for the Yellow site lives here so bios, dates,
  * and booking details can be swapped without hunting through components.
- *
- * Everything below is EXAMPLE / PLACEHOLDER content.
  */
 export const site = {
   name: "Yellow",
@@ -15,15 +13,9 @@ export const site = {
   runtime: "About 90 minutes, live plus backing tracks",
   legal:
     "Yellow is a tribute band and is not affiliated with Coldplay.",
-  /**
-   * Reserved example inbox — replace with the band’s real address.
-   * Do not use a domain that looks like an official band or venue.
-   */
   bookingEmail: "trond.karstensen@gmail.com",
   bookingNote:
     "The form opens a mail to us. If nothing happens, write directly to the address on the left.",
-  placeholderBanner:
-    "Example lineup and dates for layout. Replace everything in src/content/site.ts.",
 } as const;
 
 export const nav = [
