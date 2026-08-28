@@ -191,7 +191,7 @@ export const booking = {
   title: "Festivals, clubs, private nights.",
   body: "Tell us the city, the date, and the room. We travel with backline notes and a production rider: piano, a projector for video and stills, and a light show built for the set.",
   points: [
-    "Clubs and theatres, 200–1,200 capacity",
+    "Rooms from 100 up. The sky is the limit.",
     "Festival slots and indoor winter dates",
     "Private and corporate nights on request",
   ],
