@@ -51,32 +51,32 @@ export const members = [
   {
     name: "Thormod Bjørnland",
     role: "Vocals",
-    bio: "",
+    bio: "The sky in the room. Falsetto that hangs in the lights, then a chorus the whole floor already knows.",
   },
   {
     name: "Janne Stene",
     role: "Vocals",
-    bio: "",
+    bio: "The other half of the lift. Tight harmonies, the hush before Fix You, a second voice that makes a club feel twice as big.",
   },
   {
     name: "Hans Sander",
     role: "Guitars",
-    bio: "",
+    bio: "Delay, shimmer, and the riff everyone air-guitars. Clocks in his hands. Paradise when it needs to fly.",
   },
   {
     name: "Jon Erik Jensen",
     role: "Keys",
-    bio: "",
+    bio: "Piano, pads, the bells in Viva. He builds the atmosphere between the hits until the dark room suddenly feels huge.",
   },
   {
     name: "Trond Karstensen",
     role: "Bass",
-    bio: "",
+    bio: "The floor under the stadium. Low end that turns a two-hundred-cap night into something you feel in your chest.",
   },
   {
     name: "Odd Skancke",
     role: "Drums",
-    bio: "",
+    bio: "The engine. A kick that refuses to let Paradise drag, and cymbals that open like a sky full of stars.",
   },
 ] as const;
 
