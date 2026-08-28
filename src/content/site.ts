@@ -35,7 +35,7 @@ export const nav = [
 
 export const about = {
   kicker: "The band",
-  title: "Four people. One catalogue. A dark room that suddenly feels huge.",
+  title: "Six people. One catalogue. A dark room that suddenly feels huge.",
   body: [
     "Yellow started in a rehearsal room in Grünerløkka with a battered upright piano and a shared rule: Coldplay has to feel live. Not a laptop and a singer. Real dynamics. The hush before Fix You. The lift when the lights go gold.",
     "We play clubs, theatres, and the odd festival field. The brief is always the same — play the songs the way people remember them from the night, not from the playlist.",
@@ -49,24 +49,34 @@ export const about = {
 
 export const members = [
   {
-    name: "Elias Holm",
-    role: "Vocals, piano",
-    bio: "Example bio — the one who learned every falsetto the hard way, and still counts the room in before Yellow.",
+    name: "Thormod Bjørnland",
+    role: "Vocals",
+    bio: "",
   },
   {
-    name: "Mira Solberg",
-    role: "Guitar, vocals",
-    bio: "Example bio — delay, sparkle, and the opening figure of Clocks. Harmony on the choruses that need a second voice.",
+    name: "Janne Stene",
+    role: "Vocals",
+    bio: "",
   },
   {
-    name: "Jonas Lindqvist",
+    name: "Hans Sander",
+    role: "Guitars",
+    bio: "",
+  },
+  {
+    name: "Jon Erik Jensen",
+    role: "Keys",
+    bio: "",
+  },
+  {
+    name: "Trond Karstensen",
     role: "Bass",
-    bio: "Example bio — low end that makes a two-hundred-cap room feel like a stadium floor.",
+    bio: "",
   },
   {
-    name: "Nora Viken",
+    name: "Odd Skancke",
     role: "Drums",
-    bio: "Example bio — the engine. Also the one who refuses to let Paradise drag.",
+    bio: "",
   },
 ] as const;
 
