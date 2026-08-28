@@ -43,7 +43,7 @@ export const about = {
   stats: [
     { label: "Formed", value: "Sarpsborg, 2025" },
     { label: "Set", value: "90 minutes" },
-    { label: "Tracks", value: "Live, plus backing tracks" },
+    { label: "Tracks", value: "Live, plus backing tracks, just as Coldplay do it" },
   ],
 };
 
