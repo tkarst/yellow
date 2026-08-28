@@ -15,6 +15,8 @@ function readForm(form: HTMLFormElement) {
   return {
     name: String(data.get("name") ?? ""),
     email: String(data.get("email") ?? ""),
+    city: String(data.get("city") ?? ""),
+    date: String(data.get("date") ?? ""),
     message: String(data.get("message") ?? ""),
   };
 }
@@ -43,6 +45,21 @@ export function BookingForm() {
       setError(nextError);
       return;
     }
+    const values = readForm(form);
+    const subject = encodeURIComponent(`Yellow booking: ${values.name.trim()}`);
+    const body = encodeURIComponent(
+      [
+        `Name: ${values.name.trim()}`,
+        `Email: ${values.email.trim()}`,
+        values.city.trim() ? `City: ${values.city.trim()}` : null,
+        values.date.trim() ? `Date: ${values.date.trim()}` : null,
+        "",
+        values.message.trim(),
+      ]
+        .filter((line) => line !== null)
+        .join("\n"),
+    );
+    window.location.href = `mailto:${site.bookingEmail}?subject=${subject}&body=${body}`;
     setError(null);
     setSent(true);
   }
@@ -51,11 +68,11 @@ export function BookingForm() {
     return (
       <div className="border border-gold/30 bg-gold/5 px-6 py-10 text-center sm:px-10">
         <p className="font-display text-2xl tracking-[0.12em] text-gold uppercase">
-          Enquiry noted
+          Open your mail
         </p>
         <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-          {site.bookingNote} When the real inbox is connected, this is where
-          the thank-you will live.
+          Your mail app should open to {site.bookingEmail}. If it does not, write
+          us there directly.
         </p>
         <Button
           type="button"
@@ -108,7 +125,7 @@ export function BookingForm() {
             id="booking-city"
             name="city"
             className={fieldClass}
-            placeholder="Oslo"
+            placeholder="Sarpsborg"
           />
         </Field>
         <Field label="Preferred date" htmlFor="booking-date">
@@ -141,15 +158,11 @@ export function BookingForm() {
       ) : null}
 
       <button
-        type="button"
+        type="submit"
         className={cn(
           buttonVariants(),
           "h-12 w-full rounded-none px-6 font-display text-[0.8rem] tracking-[0.28em] uppercase sm:w-auto",
         )}
-        onClick={(event) => {
-          const form = event.currentTarget.form;
-          if (form) handleSend(form);
-        }}
       >
         Send enquiry
       </button>

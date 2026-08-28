@@ -26,7 +26,7 @@ export function Booking() {
             ))}
           </ul>
           <p className="mt-10 text-sm text-muted-foreground">
-            Placeholder inbox:{" "}
+            Write to:{" "}
             <a
               href={`mailto:${site.bookingEmail}`}
               className="text-gold underline-offset-4 hover:underline"

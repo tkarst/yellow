@@ -19,9 +19,9 @@ export const site = {
    * Reserved example inbox — replace with the band’s real address.
    * Do not use a domain that looks like an official band or venue.
    */
-  bookingEmail: "booking@example.com",
+  bookingEmail: "trond.karstensen@gmail.com",
   bookingNote:
-    "Example enquiry form. It does not send mail yet — connect it to your inbox when you are ready.",
+    "The form opens a mail to us. If nothing happens, write directly to the address on the left.",
   placeholderBanner:
     "Example lineup and dates for layout. Replace everything in src/content/site.ts.",
 } as const;
