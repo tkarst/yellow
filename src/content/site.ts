@@ -8,7 +8,7 @@ export const site = {
   name: "Yellow",
   tagline: "A tribute to Coldplay",
   pitch:
-    "Live Coldplay. Stadium atmosphere. The songs you already sing.",
+    "Live Coldplay. Lights, film, stadium atmosphere. The songs you already sing.",
   description:
     "Yellow is a Coldplay tribute from Sarpsborg, playing the catalogue live.",
   formed: "Sarpsborg, 2025",
@@ -38,7 +38,7 @@ export const about = {
   title: "Six people. One catalogue. A dark room that suddenly feels huge.",
   body: [
     "Yellow started in Sarpsborg in 2025 with one rule: Coldplay has to feel like the night, not the playlist. A live band, plus the backing tracks Coldplay use on stage, so the room gets the full picture: synths, choir, the lift when the lights go gold.",
-    "We play clubs, theatres, and the odd festival field. The brief is always the same — play the songs the way people remember them from the night, not from the playlist.",
+    "We play clubs, theatres, and the odd festival field. Behind the band, a projector runs video and stills with the set, and a light show rides every chorus, so a dark room suddenly feels huge.",
   ],
   stats: [
     { label: "Formed", value: "Sarpsborg, 2025" },
@@ -189,7 +189,7 @@ export const setlist = {
 export const booking = {
   kicker: "Book the band",
   title: "Festivals, clubs, private nights.",
-  body: "Tell us the city, the date, and the room. We travel with our own backline notes and a simple production rider — piano, lights, and space to get loud.",
+  body: "Tell us the city, the date, and the room. We travel with backline notes and a production rider: piano, a projector for video and stills, and a light show built for the set.",
   points: [
     "Clubs and theatres, 200–1,200 capacity",
     "Festival slots and indoor winter dates",
