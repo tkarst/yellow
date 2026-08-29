@@ -72,70 +72,31 @@ export const members = [
   },
 ] as const;
 
-export type GigStatus = "on-sale" | "sold-out" | "few-left";
+export type GigStatus = "on-sale" | "sold-out" | "few-left" | "private" | "announced";
 
 export const gigs: {
   iso: string;
+  title: string;
   city: string;
   country: string;
   venue: string;
   status: GigStatus;
 }[] = [
   {
-    iso: "2026-09-12",
-    city: "Oslo",
+    iso: "2026-11-03",
+    title: "PreProd Show",
+    city: "Sarpsborg",
     country: "Norway",
-    venue: "Rockefeller Music Hall",
-    status: "on-sale",
+    venue: "Private",
+    status: "private",
   },
   {
-    iso: "2026-09-26",
-    city: "Gothenburg",
-    country: "Sweden",
-    venue: "Pustervik",
-    status: "on-sale",
-  },
-  {
-    iso: "2026-10-10",
-    city: "Stockholm",
-    country: "Sweden",
-    venue: "Debaser Strand",
-    status: "few-left",
-  },
-  {
-    iso: "2026-10-24",
-    city: "Copenhagen",
-    country: "Denmark",
-    venue: "VEGA",
-    status: "on-sale",
-  },
-  {
-    iso: "2026-11-07",
-    city: "Helsinki",
-    country: "Finland",
-    venue: "Tavastia",
-    status: "on-sale",
-  },
-  {
-    iso: "2026-11-21",
-    city: "Amsterdam",
-    country: "Netherlands",
-    venue: "Melkweg",
-    status: "on-sale",
-  },
-  {
-    iso: "2026-12-05",
-    city: "Berlin",
-    country: "Germany",
-    venue: "Lido",
-    status: "on-sale",
-  },
-  {
-    iso: "2026-12-19",
-    city: "Bergen",
+    iso: "2027-01-09",
+    title: "First Official Concert",
+    city: "Sarpsborg",
     country: "Norway",
-    venue: "USF Verftet",
-    status: "sold-out",
+    venue: "Glenghuset",
+    status: "announced",
   },
 ];
 
@@ -193,6 +154,8 @@ export const statusLabel: Record<GigStatus, string> = {
   "on-sale": "On sale",
   "sold-out": "Sold out",
   "few-left": "Few left",
+  private: "Private",
+  announced: "Announced",
 };
 
 export function formatGigDate(iso: string) {

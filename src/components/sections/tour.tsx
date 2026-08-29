@@ -11,8 +11,7 @@ export function Tour() {
           kicker="On the road"
           title="Upcoming nights."
         >
-          Example dates in Nordic and northern European rooms. Swap the
-          calendar when the real tour lands.
+          Two nights in Sarpsborg to start. More dates as they land.
         </SectionHeading>
 
         {gigs.length === 0 ? (
@@ -34,12 +33,12 @@ export function Tour() {
                 </time>
                 <div>
                   <p className="font-display text-2xl tracking-[0.06em] text-foreground uppercase sm:text-3xl">
-                    {gig.city}
+                    {gig.title}
                   </p>
                   <p className="mt-1 text-sm text-muted-foreground">
                     {gig.venue}
                     <span className="text-foreground/30"> · </span>
-                    {gig.country}
+                    {gig.city}
                   </p>
                 </div>
                 <span
@@ -47,6 +46,8 @@ export function Tour() {
                     "w-fit font-display text-[0.68rem] tracking-[0.22em] uppercase",
                     gig.status === "sold-out" && "text-ember",
                     gig.status === "few-left" && "text-gold",
+                    gig.status === "private" && "text-ember",
+                    gig.status === "announced" && "text-gold",
                     gig.status === "on-sale" && "text-foreground/55",
                   )}
                 >
