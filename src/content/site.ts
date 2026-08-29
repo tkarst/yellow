@@ -83,7 +83,7 @@ export const gigs: {
   status: GigStatus;
 }[] = [
   {
-    iso: "2026-11-03",
+    iso: "2026-11-07",
     title: "PreProd Show",
     city: "Sarpsborg",
     country: "Norway",
