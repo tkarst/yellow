@@ -15,8 +15,8 @@ export function Hero() {
       <p className="mt-2 max-w-md text-center text-sm leading-relaxed text-foreground/75 sm:mt-3 sm:text-base">
         {site.pitch}
       </p>
-      <p className="mt-2 font-serif text-sm tracking-wide text-ember sm:text-base">
-        {site.formed}
+      <p className="mt-1 max-w-md text-center text-sm leading-relaxed text-foreground/75 sm:text-base">
+        {site.pitchLine}
       </p>
 
       <div className="mt-8 flex w-full max-w-md flex-col gap-3 sm:mt-10 sm:flex-row sm:justify-center">

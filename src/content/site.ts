@@ -5,8 +5,8 @@
 export const site = {
   name: "Yellow",
   tagline: "A tribute to Coldplay",
-  pitch:
-    "Live Coldplay. Lights, film, stadium atmosphere. The songs you already sing.",
+  pitch: "Live Coldplay. Lights, film, stadium atmosphere.",
+  pitchLine: "The songs you already sing.",
   description:
     "Yellow is a Coldplay tribute from Sarpsborg, playing the catalogue live.",
   formed: "Sarpsborg, 2025",

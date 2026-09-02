@@ -36,14 +36,14 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Yellow — a tribute to Coldplay",
-    description: site.pitch,
+    description: `${site.pitch} ${site.pitchLine}`,
     type: "website",
     locale: "en_GB",
   },
   twitter: {
     card: "summary_large_image",
     title: "Yellow — a tribute to Coldplay",
-    description: site.pitch,
+    description: `${site.pitch} ${site.pitchLine}`,
   },
   robots: {
     index: true,
