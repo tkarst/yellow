@@ -1,5 +1,5 @@
 import { SectionHeading } from "@/components/section-heading";
-import { formatGigDate, gigs, statusLabel } from "@/content/site";
+import { gigs, statusLabel } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 export function Tour() {
@@ -7,11 +7,11 @@ export function Tour() {
     <section id="dates" className="relative px-4 py-24 sm:px-6 sm:py-32">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
-          index="02"
+          index="03"
           kicker="On the road"
           title="Upcoming nights."
         >
-          Two nights in Sarpsborg to start. More dates as they land.
+          Two nights in Sarpsborg to start — November, then January. More dates as they land.
         </SectionHeading>
 
         {gigs.length === 0 ? (
@@ -29,7 +29,7 @@ export function Tour() {
                   dateTime={gig.iso}
                   className="font-display text-sm tracking-[0.18em] text-gold uppercase"
                 >
-                  {formatGigDate(gig.iso)}
+                  {gig.when}
                 </time>
                 <div>
                   <p className="font-display text-2xl tracking-[0.06em] text-foreground uppercase sm:text-3xl">

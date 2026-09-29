@@ -8,7 +8,7 @@ export function Booking() {
       <div className="mx-auto grid max-w-6xl gap-14 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-20">
         <div>
           <SectionHeading
-            index="04"
+            index="05"
             kicker={booking.kicker}
             title={booking.title}
           >

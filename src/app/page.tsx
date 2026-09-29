@@ -1,5 +1,6 @@
 import { About } from "@/components/sections/about";
 import { Booking } from "@/components/sections/booking";
+import { Film } from "@/components/sections/film";
 import { Hero } from "@/components/sections/hero";
 import { Setlist } from "@/components/sections/setlist";
 import { Tour } from "@/components/sections/tour";
@@ -13,6 +14,7 @@ export default function Home() {
       <main>
         <Hero />
         <About />
+        <Film />
         <Tour />
         <Setlist />
         <Booking />

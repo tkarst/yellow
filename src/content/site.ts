@@ -20,10 +20,22 @@ export const site = {
 
 export const nav = [
   { href: "#about", label: "About" },
+  { href: "#film", label: "Film" },
   { href: "#dates", label: "Dates" },
   { href: "#setlist", label: "Setlist" },
   { href: "#booking", label: "Booking" },
 ] as const;
+
+export const film = {
+  kicker: "Silent film",
+  title: "The Music of Coldplay.",
+  intro:
+    "A quiet journey through the spheres. Three minutes and twenty seconds. No sound. Press play.",
+  url: "https://blend-lunar-lagoon-orbit.grok.me",
+  iframeTitle: "The Music of Coldplay — Yellow",
+  note: "Works best full screen.",
+  openLabel: "Open the film",
+};
 
 export const about = {
   kicker: "The band",
@@ -76,6 +88,7 @@ export type GigStatus = "on-sale" | "sold-out" | "few-left" | "private" | "annou
 
 export const gigs: {
   iso: string;
+  when: string;
   title: string;
   city: string;
   country: string;
@@ -83,7 +96,8 @@ export const gigs: {
   status: GigStatus;
 }[] = [
   {
-    iso: "2026-11-07",
+    iso: "2026-11",
+    when: "November 2026",
     title: "PreProd Show",
     city: "Sarpsborg",
     country: "Norway",
@@ -91,7 +105,8 @@ export const gigs: {
     status: "private",
   },
   {
-    iso: "2027-01-09",
+    iso: "2027-01",
+    when: "January 2027",
     title: "First Official Concert",
     city: "Sarpsborg",
     country: "Norway",
@@ -158,12 +173,3 @@ export const statusLabel: Record<GigStatus, string> = {
   announced: "Announced",
 };
 
-export function formatGigDate(iso: string) {
-  return new Intl.DateTimeFormat("en-GB", {
-    weekday: "short",
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-    timeZone: "Europe/Oslo",
-  }).format(new Date(`${iso}T20:00:00+02:00`));
-}
