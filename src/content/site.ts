@@ -30,11 +30,9 @@ export const film = {
   kicker: "Silent film",
   title: "The Music of Coldplay.",
   intro:
-    "A quiet journey through the spheres. Three minutes and twenty seconds. No sound. Press play.",
+    "A quiet journey through the spheres. Three minutes and twenty seconds. No sound.",
   url: "https://blend-lunar-lagoon-orbit.grok.me",
   iframeTitle: "The Music of Coldplay — Yellow",
-  note: "Works best full screen.",
-  openLabel: "Open the film",
 };
 
 export const about = {

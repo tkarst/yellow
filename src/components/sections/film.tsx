@@ -27,17 +27,6 @@ export function Film() {
           </div>
         </div>
 
-        <p className="mt-5 text-center text-sm text-muted-foreground">
-          {film.note}{" "}
-          <a
-            href={film.url}
-            target="_blank"
-            rel="noreferrer"
-            className="text-gold underline-offset-4 transition-colors hover:text-ember hover:underline"
-          >
-            {film.openLabel}
-          </a>
-        </p>
       </div>
     </section>
   );
