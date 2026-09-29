@@ -27,8 +27,7 @@ export const nav = [
 ] as const;
 
 export const film = {
-  kicker: "Silent film",
-  title: "A quiet journey through the spheres.",
+  kicker: "A quiet journey through the spheres.",
   url: "https://blend-lunar-lagoon-orbit.grok.me",
   iframeTitle: "The Music of Coldplay — Yellow",
   openLabel: "Open the film",

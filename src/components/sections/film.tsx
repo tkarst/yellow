@@ -1,15 +1,14 @@
-import { SectionHeading } from "@/components/section-heading";
 import { film } from "@/content/site";
 
 export function Film() {
   return (
     <section id="film" className="relative px-4 py-24 sm:px-6 sm:py-32">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading
-          index="02"
-          kicker={film.kicker}
-          title={film.title}
-        />
+        <p className="font-display text-[0.7rem] tracking-[0.42em] text-gold uppercase">
+          <span className="text-ember/90">02</span>
+          <span className="mx-3 text-gold/40">/</span>
+          {film.kicker}
+        </p>
 
         <div className="mt-12 overflow-hidden rounded-sm border border-white/10 bg-black shadow-[0_0_80px_-30px_rgba(212,175,55,0.35)]">
           <div className="relative aspect-video w-full">
