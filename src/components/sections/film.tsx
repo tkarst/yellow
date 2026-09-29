@@ -9,9 +9,7 @@ export function Film() {
           index="02"
           kicker={film.kicker}
           title={film.title}
-        >
-          {film.intro}
-        </SectionHeading>
+        />
 
         <div className="mt-12 overflow-hidden rounded-sm border border-white/10 bg-black shadow-[0_0_80px_-30px_rgba(212,175,55,0.35)]">
           <div className="relative aspect-video w-full">
