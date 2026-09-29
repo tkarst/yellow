@@ -33,6 +33,7 @@ export const film = {
     "A quiet journey through the spheres. Three minutes and twenty seconds. No sound.",
   url: "https://blend-lunar-lagoon-orbit.grok.me",
   iframeTitle: "The Music of Coldplay — Yellow",
+  openLabel: "Open the film",
 };
 
 export const about = {
