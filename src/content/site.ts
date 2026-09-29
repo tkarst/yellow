@@ -168,6 +168,6 @@ export const statusLabel: Record<GigStatus, string> = {
   "sold-out": "Sold out",
   "few-left": "Few left",
   private: "Private",
-  announced: "Announced",
+  announced: "Coming soon",
 };
 
